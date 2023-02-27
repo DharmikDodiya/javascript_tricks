@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+
+        <p id="myText">Hello World</p>
+        <button class="btn" onclick="copyContent()">Copy!</button>
+        <br>
+
+    <script>
+        document.write('stringify method')
+        document.write('<br>')
+        console.log('stringify method')
+        const obj={
+            name : 'dharmik',
+            obj :{
+                name : 'dharmik',
+                    obj :{
+                name : 'dharmik',
+                    obj :{
+                name : 'dharmik'
+                    }
+                }
+            }
+        }
+
+        console.log(obj);
+        document.write(JSON.stringify(obj,null,2))
+        document.write('<br>')
+        console.log(JSON.stringify(obj,null,2))
+
+
+        document.write('========================================')
+        document.write('<br>')
+        console.log('number seperator')
+        document.write('number seperator')
+        document.write('<br>')
+        const num = 600_000_000
+        document.write(num)
+        console.log(num)
+        
+
+        document.write('<br>')
+        document.write('========================================')
+        document.write('<br>')
+        console.log('Flatten a multilevel array')
+        document.write('Flatten a multilevel array')
+        document.write('<br>')
+        const flatten = (array) => {
+            return array.reduce((result,it) =>{
+                return result.concat(Array.isArray(it) ? flatten(it) :it)
+            },[])
+        }
+
+        const arr = [
+            'dharmik',
+            [
+                'shivang',
+                [
+                    'jatin',
+                    [
+                        'sarman',
+                        [
+                            'pujan',
+                            [
+
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+        document.write(flatten(arr))
+        console.log(flatten(arr))
+        console.log(arr.flat(Infinity))
+
+
+
+        document.write('<br>')
+        document.write('========================================')
+        document.write('<br>')
+        document.write('use URLSearchParams')
+        document.write('<br>')
+        const url = 'https://medium.com/?name=dharmik&age=100'
+        const searchparams = new URLSearchParams(location.search)
+
+        console.log(searchparams.get('name'))
+        console.log(searchparams.get('age'))
+
+        searchparams.append('name2','pujan')
+        document.write(searchparams.toString())
+        console.log(searchparams.toString())
+
+
+
+        let text = document.getElementById('myText').innerHTML;
+            const copyContent = async () => {
+        try {
+            await navigator.clipboard.writeText(text);
+            alert('content copird to Clipboard');
+            console.log('Content copied to clipboard');
+        } 
+        catch (err) {
+            console.error('Failed to copy: ', err);
+        }
+  } 
+        document.write('<br>')
+
+
+
+        document.write('========================================')
+        document.write('<br>')
+        document.write('generate A Random string')
+        const getRandomString = () =>{
+            return Math.random().toString(36).slice(2)
+        }
+            console.log(getRandomString())
+            console.log(getRandomString())
+            console.log(getRandomString())
+            console.log(getRandomString())
+            document.write('<br>')
+            document.write(getRandomString())
+            document.write('<br>')
+            document.write(getRandomString())
+            document.write('<br>')
+            document.write(getRandomString())
+            document.write('<br>')
+            document.write(getRandomString())
+
+
+        
+        document.write('<br>')
+        document.write('========================================')
+        document.write('<br>')
+        document.write('format Money')
+        document.write('<br>')
+
+        const formatMoney = (money) =>{
+            //return money.replace(new RegExp("(?!^)(?=(\\d{3}) +$money.include('.') ? '\\.' : '$'})",'g'),',')
+            return money.toLocaleString()
+        }
+        console.log(formatMoney(123456789))
+        console.log(formatMoney(1234567.7897))
+        console.log(formatMoney(1234))
+        document.write(formatMoney(1123456789))
+        document.write('<br>')
+        document.write(formatMoney(1234567.9876))
+        document.write('<br>')
+        document.write(formatMoney(11234))
+        document.write('<br>')
+
+
+
+
+        document.write('========================================')
+        document.write('<br>')
+        document.write('get values form array and objects using destructuring')
+        document.write('<br>')
+
+        const [dharmik,sarman,hitesh,pujan,shivang] = [1,2,3,4,5]
+        console.log(sarman)
+        document.write(sarman)
+        document.write('<br>')
+        const me = {name :'dharmik' ,age : 21}
+        const {name ,age }= me
+        console.log(name,age)
+        document.write(name,age)
+        
+
+        const arr1 = [1,2,3,4]
+        const arr2 = [arr1,5,6]
+        console.log(arr2)
+        document.write('<br>')
+        document.write(arr2)
+        const obj1 = {
+            name : 'dharmik'
+        }
+        const obj2 = {
+            obj1,
+            age : 21
+        }
+        console.log(obj2)
+        
+        document.write('<br>')
+        document.write('========================================')
+        document.write('<br>')
+        document.write('splicing strings using the templete engine')
+        document.write('<br>')
+
+        const fname = 'dharmik'
+        const year = 21
+       
+        document.write('<br>')
+
+        const str1 = 'my name is '+name +'and i am ' +age +'year old'
+        const str2 = 'My name is ${name} and i am ${age} year old'
+       
+        document.write(str1)
+        document.write('<br>')
+        document.write(str2)
+        console.log(str1)
+        console.log(str2)
+
+
+        document.write('<br>')
+        document.write('========================================')
+        document.write('<br>')
+        document.write('Use The Rest Parameter')
+        document.write('<br>')
+
+        const sum = function(){
+            return Array.from(arguments).reduce((sum,num) => sum + num)
+        }
+        console.log('sum is ='+sum(1,2,3,4,5))
+        console.log('sum is ='+sum(10,12,12))
+        document.write('sum is =' + sum(12,10,2,3,4))
+
+        // const sum = (nums){
+        //     return nums.reduce((sum,num) => sum + num)
+        // }
+        document.write('<br>')
+        document.write('========================================')
+        document.write('<br>')
+        document.write('Use Default Parameters')
+        document.write('<br>')
+        
+        const logInfo = (a,b) =>{
+            b = b || 'world'
+            console.log(a,b)
+        }
+        logInfo('Hello')
+        logInfo('Hello','Dharmik')
+        logInfo('Hello','')
+
+        document.write('<br>')
+        document.write('========================================')
+        document.write('<br>')
+        document.write('Use Optional chaining')
+        document.write('<br>')
+
+        // const obj3 = null
+        // console.log(obj3.nm)
+
+        const obj4 = null
+        console.log(obj4 && obj4.nm)
+
+        const obj5 = null
+        console.log(obj5?.nm)
+
+
+    </script>
+</body>
+</html>
